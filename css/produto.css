@@ -1,0 +1,50 @@
+ 
+ 	
+ 	body {
+ 		min-height: 800px;
+ 	}
+
+	#form {
+		width: 400px;
+		height: 500px;
+		background-color:#06080a;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin:-105px 0px 0px -200px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		-webkit-box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.75);
+		box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.75);
+	}
+
+	.content {
+		width: 300px;
+		text-align: center;
+	}
+
+	.input {
+		width: 300px;
+		height: 50px;
+		background-color: #15191b;
+		border: 0;
+		font-size: 20px;
+		font-family: 'Playfair Display', serif;
+		margin-bottom: 30px;
+		border-radius: 2px;
+		color: white;
+	}
+
+	.butao {
+		width: 200px;
+		height: 40px;
+		background-color:#f6ee34;
+		color:  #1e272b;
+		border: 0;
+		border-radius: 2px;
+		font-size: 24px;
+		font-family: 'Playfair Display', serif;
+		
+	}
