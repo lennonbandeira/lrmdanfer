@@ -1,0 +1,16 @@
+	#form {
+		width: 400px;
+		height: 980px;
+		background-color:#06080a;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin:-105px 0px 0px -200px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		-webkit-box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.75);
+		box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.75);
+		margin-bottom: 15px;
+	}
