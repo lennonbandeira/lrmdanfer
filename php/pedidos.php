@@ -35,9 +35,35 @@
 		
 		<div class="content">
 		<input type="number" name="id_ped" placeholder=" ID" class="input">
-		<input type="" name="id_cliente_ped" placeholder="ID Cliente" class="input">
-		<input type="text" name="prod_ped" placeholder="produto" class="input">
-		<input type="number" name="quant_ped" placeholder=" quantidade" class="input">
+			<select name="cliente_fk" id="Cliente:">
+				<?php
+				$servidor = "localhost";
+				$usuario = "root";
+				$senha = "";
+				$db = "lrm";
+				$conn = mysqli_connect($servidor, $usuario, $senha, $db);
+
+				if (!$conn){
+				die();
+				}
+
+				$sql2 = "SELECT * FROM cliente";
+				$resultado = mysqli_query($conn, $sql2);
+				mysqli_fetch_array($resultado);
+				foreach ($resultado as $row) {
+					echo "<option value = '".$row['id_cliente']."'>".$row['nome_cliente']."</option>";
+				}
+				?>
+			</select>
+			
+		<select name="tipo_ped" id="tipo">
+			<option value= "entrada">Entrada</option>
+			<option value= "saida">Saida</option>
+			
+		</select>
+		<input type="number" name="quant_prod" placeholder="quantidade" class="input">
+		<input type="text" name="valor_ped" placeholder="Valor:" class="input">
+		<input type="number" name="fornecedor_ped" placeholder=" Fornecedor" class="input">	
 		<input type="text" name="tipo_ped" placeholder=" Tipo:" class="input">
 		<input type="number" name="valor_ped" placeholder=" Valor Unidade:" class="input"> 
 		<input type="text" name="obs_ped" placeholder=" Observação:" class="input">

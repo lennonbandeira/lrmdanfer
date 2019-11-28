@@ -32,6 +32,7 @@
 
 	</nav>
 
+
 	<form  action="clientes.php" method="Post" id="form">
 		
 		<div class="content">
@@ -47,8 +48,26 @@
 		<input type="number" name="tel_cliente" placeholder=" Telefone:" class="input">
 		<input type="text" name="email_cliente" placeholder=" E-mail:" class="input">
 		<input type="text" name="resp_cliente" placeholder=" Responsável:" class="input">
-		<input type="text" name="cidade_cliente" placeholder=" cidade" class="input">
+		<select name="cidade_cliente" id="cidade">
+			<?php
+			$servidor = "localhost";
+			$usuario = "root";
+			$senha = "";
+			$db = "lrm";
+			$conn = mysqli_connect($servidor, $usuario, $senha, $db);
 
+			if (!$conn){
+			die();
+			}
+
+			$sql = "SELECT * FROM  cidade";
+			$resultado = mysqli_query($conn,$sql);
+			mysqli_fetch_array($resultado);
+			foreach ($resultado as $rows) {
+				echo "<option value = '".$rows['id']."'>".$rows['nome']."</option>";
+			}
+			?>
+		</select>
 		<button type="submit" class="butao">Cadastrar</button>
 		</div>
 	</form>
@@ -75,8 +94,8 @@ if (isset($_POST['nome_cliente'])) {
 	$cidade_cli = $_POST['cidade_cliente'];
 
 
-	$sql = "INSERT INTO cliente (id, nome, r_social, inscricao,cnpj, bairro, endereco, cep, telefone, email, responsavel, FK_cidade_id) VALUES ('$codigo_cli','$nome_cli', '$rsocial_cli','$iestadual_cli',$cnpj_cli, '$bairro_cli', '$end_cli', '$cep_cli', '$tel_cli', '$email_cli', '$resp_cli', '$cidade_cli')";
-
+	$sql = "INSERT INTO cliente (id_cliente, nome_cliente, r_social, inscricao,cnpj, bairro, endereco, cep, telefone, email, responsavel, FK_cidade_id) VALUES ('$codigo_cli','$nome_cli', '$rsocial_cli','$iestadual_cli',$cnpj_cli, '$bairro_cli', '$end_cli', '$cep_cli', '$tel_cli', '$email_cli', '$resp_cli', '$cidade_cli')";
+   print_r($sql);
 	$resultado = mysqli_query($con, $sql);
 
 	mysqli_close($con);
