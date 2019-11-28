@@ -36,12 +36,12 @@
 		<div class="content">
 		<input type="number" name="id_cid" placeholder="id Cidade:" class="input">
 		<input type="text" name="nome_cid" placeholder=" Cidade:" class="input">
-		<input type="button" name="" value="Cadastrar" class="butao">
+		<button type="submit" class="butao">Cadastrar</button>
 		</div>
 	</form>
 	<?php
 
-if (isset($_POST['codigo_produto'])) {
+if (isset($_POST['id_cid'])) {
 
 	include "../conexao/connection.php";
 
