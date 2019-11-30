@@ -34,7 +34,7 @@
 	<form  action="pedidos.php" method="Post" id="form">
 		
 		<div class="content">
-		<input type="number" name="id_ped" placeholder=" ID" class="input">
+		<input type="number" name="id_ped" placeholder="Numero do pedido:" class="input">
 			<select name="cliente_fk" id="Cliente:">
 				<?php
 				$servidor = "localhost";
