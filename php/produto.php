@@ -29,19 +29,34 @@
 
 		</ul>
 
+		
+
 
 	</nav>
+
+	<li><a href="estoque.php">Estoque De Produtos</a></li>
 
 	<form  action="produto.php" method="Post" id="form">
 		
 		<div class="content">
 		<input type="number" name="codigo_produto" placeholder="cód. produto:" class="input">
 		<input type="text" name="nome_produto" placeholder=" Nome:" class="input">
-		<select name="fornecedor_produto" class="input" >
 			
-			<option hidden selected value>Fornecedor</option>
+			<?php
+			include "../conexao/connection.php";
+			$con=conecta();
+			$sql5="SELECT * FROM fornecedor";
+			$resultado4= mysqli_query($con,$sql5);
 
-		</select>
+			echo "<select name='fornecedor'>";
+
+			foreach($resultado4 as $linha2){
+
+				echo "<option value='" . $linha2['id'] . "'> Fornecedor: " . $linha2['nome'] . "</option>";
+			}
+			echo "</select>";
+		?>
+
 		<input type="number" name="ncm" placeholder=" NCM:" class="input">
 		<input type="text" name="valor_produto" placeholder=" Valor Unidade:" class="input"> 
 		<input type="number" name="quantida_produto" placeholder=" Quantidade:" class="input">
@@ -54,20 +69,20 @@
 
 if (isset($_POST['codigo_produto'])) {
 
-	include "../conexao/connection.php";
+	
 
 	$con = conecta();
 
 	$codigo_p= $_POST['codigo_produto'];
 	$nome_p = $_POST['nome_produto'];
-	$fornecedor_p= $_POST['fornecedor_produto'];
+	$fornecedor_p= $_POST['fornecedor'];
 	$ncm_p = $_POST['ncm'];
 	$valor_p= $_POST['valor_produto'];
 	$quantida_p = $_POST['quantida_produto'];
 	$obs_p = $_POST['obs_produto'];
 
 
-	$sql = "INSERT INTO produtos (id, nome, ncm, valor_unitario,observacao, quantidade) VALUES ('$codigo_p','$nome_p', '$ncm_p','$valor_p',$obs_p, '$quantida_p')";
+	$sql = "INSERT INTO produtos (id, nome, ncm, valor_unitario,observacao, quantidade, fornecedor) VALUES ('$codigo_p','$nome_p', '$ncm_p','$valor_p',$obs_p, '$quantida_p', '$fornecedor_p')";
 
 	$resultado = mysqli_query($con, $sql);
 

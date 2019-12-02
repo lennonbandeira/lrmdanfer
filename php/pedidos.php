@@ -35,23 +35,22 @@
 		
 		<div class="content">
 		<input type="number" name="id_ped" placeholder="Numero do pedido:" class="input">
+		<div id="junta">
 			<select name="cliente_fk" id="Cliente:">
 				<?php
-				$servidor = "localhost";
-				$usuario = "root";
-				$senha = "";
-				$db = "lrm";
-				$conn = mysqli_connect($servidor, $usuario, $senha, $db);
+					
+					include "../conexao/connection.php";
 
-				if (!$conn){
-				die();
-				}
+				$con = conecta();
 
 				$sql2 = "SELECT * FROM cliente";
-				$resultado = mysqli_query($conn, $sql2);
+
+				$resultado = mysqli_query($con, $sql2);
+
 				mysqli_fetch_array($resultado);
+
 				foreach ($resultado as $row) {
-					echo "<option value = '".$row['id_cliente']."'>".$row['nome_cliente']."</option>";
+					echo "<option value = '".$row['id_cliente']."'> Cliente: ".$row['nome_cliente']."</option>";
 				}
 				?>
 			</select>
@@ -61,32 +60,52 @@
 			<option value= "saida">Saida</option>
 			
 		</select>
+		<?php
+			$con=conecta();
+			$sql4="SELECT * FROM produtos";
+			$resultado3= mysqli_query($con,$sql4);
+			echo "<select>";
+			foreach($resultado3 as $linha1){
+				echo "<option value='" . $linha1['id'] . "'>Produto: " . $linha1['nome'] . "</option>";
+			}
+			echo "</select>";
+		?>
+	</div>
 		<input type="number" name="quant_prod" placeholder="quantidade" class="input">
-		<input type="text" name="valor_ped" placeholder="Valor:" class="input">
-		<input type="number" name="fornecedor_ped" placeholder=" Fornecedor" class="input">	
-		<input type="text" name="tipo_ped" placeholder=" Tipo:" class="input">
-		<input type="number" name="valor_ped" placeholder=" Valor Unidade:" class="input"> 
-		<input type="text" name="obs_ped" placeholder=" Observação:" class="input">
-		<button type="submit" class="butao">Cadastrar</button>
+		
+		<input type="number" name="valor_prod" placeholder=" Valor Unidade:" class="input">
+		
+		<input type="text" name="valor_t" placeholder="Valor total:" class="input">
+		<?php
+			$con=conecta();
+			$sql3="SELECT * FROM vendedor";
+			$resultado2= mysqli_query($con,$sql3);
+			echo "<select>";
+			foreach($resultado2 as $linha){
+				echo "<option value='" . $linha['ID'] . "'>Vendedor: " . $linha['nome'] . "</option>";
+			}
+			echo "</select>";
+		?> 
+		<input type="date" name="data" placeholder=" Data do pedido:" class="input">
+		<button type="submit" class="butao">Adicionar</button>
 		</div>
 	</form>
 	<?php
 
 if (isset($_POST['codigo_produto'])) {
 
-	include "../conexao/connection.php";
-
 	$con = conecta();
 
 	$codigo_pe= $_POST['codigo_ped'];
 	$nome_pe = $_POST['nome_ped'];
 	$tipo_pe= $_POST['tipo_ped'];
-	$valor_pe= $_POST['valor_ped'];
-	$quantida_p = $_POST['quantida_produto'];
-	$obs_pe = $_POST['obs_ped'];
+	$quantida_p = $_POST['quantida_prod'];
+	$valor_vp = $_POST['valor_prod'];
+	$valor_tt = $_POST['valor_t'];
+	$dt_pe = $_POST['data'];
 
 
-	$sql = "INSERT INTO produtos (id, tipo,valor,observacao, quantidade) VALUES ('$codigo_p','$nome_p', '$ncm_p','$valor_p',$obs_p, '$quantida_p')";
+	$sql = "INSERT INTO produtos (id, quantidade,valor, FK_fornecedor_id, FK_cliente_id, FK_produtos_id, valor_total, FK_vendedor_id, data) VALUES ('$codigo_pe','$quantida_p', '$valor_vp','Null',$'nome_pe', '$')";
 
 	$resultado = mysqli_query($con, $sql);
 

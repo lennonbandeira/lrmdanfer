@@ -40,8 +40,7 @@
 		<input type="text" name="cnpj_forne" placeholder="CNPJ" class="input"> 
 		<input type="text" name="email_forne" placeholder=" E-mail:" class="input">
 		<input type="number" name="tel_forne" placeholder=" Telefone:" class="input">
-		<select name="cidade_forne" class="input"> 
-		 </select>
+		
 		<button type="submit" class="butao">Cadastrar</button>
 		</div>
 	</form>
