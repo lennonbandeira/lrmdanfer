@@ -31,6 +31,8 @@
 
 	</nav>
 
+	<li><a href="listcidades.php">Cidades Cadastradas</a></li>
+
 	<form  action="cidades.php" method="Post" id="form">
 		
 		<div class="content">

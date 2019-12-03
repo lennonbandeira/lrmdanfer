@@ -34,9 +34,9 @@
 	<form  action="pedidos.php" method="Post" id="form">
 		
 		<div class="content">
-		<input type="number" name="id_ped" placeholder="Numero do pedido:" class="input">
+	
 		<div id="junta">
-			<select name="cliente_fk" id="Cliente:">
+			<select name="cliente_fk" id="Cliente:" class="input">
 				<?php
 					
 					include "../conexao/connection.php";
@@ -50,27 +50,25 @@
 				mysqli_fetch_array($resultado);
 
 				foreach ($resultado as $row) {
-					echo "<option value = '".$row['id_cliente']."'> Cliente: ".$row['nome_cliente']."</option>";
+					echo "<option hidden selected>Clientes</option>
+					<option value = '".$row['id_cliente']."'>".$row['nome_cliente']."</option>";
 				}
 				?>
 			</select>
 			
-		<select name="tipo_ped" id="tipo">
-			<option value= "entrada">Entrada</option>
-			<option value= "saida">Saida</option>
-			
-		</select>
 		<?php
 			$con=conecta();
 			$sql4="SELECT * FROM produtos";
 			$resultado3= mysqli_query($con,$sql4);
-			echo "<select>";
+			echo "<select name='prod_pe' class='input'>";
 			foreach($resultado3 as $linha1){
-				echo "<option value='" . $linha1['id'] . "'>Produto: " . $linha1['nome'] . "</option>";
+			echo "<option hidden selected>Produtos</option>
+				<option value='" . $linha1['id'] . "'>" . $linha1['nome'] . "</option>";
 			}
 			echo "</select>";
 		?>
 	</div>
+
 		<input type="number" name="quant_prod" placeholder="quantidade" class="input">
 		
 		<input type="number" name="valor_prod" placeholder=" Valor Unidade:" class="input">
@@ -80,9 +78,10 @@
 			$con=conecta();
 			$sql3="SELECT * FROM vendedor";
 			$resultado2= mysqli_query($con,$sql3);
-			echo "<select>";
+			echo "<select name='vend_pe' class='input'>";
 			foreach($resultado2 as $linha){
-				echo "<option value='" . $linha['ID'] . "'>Vendedor: " . $linha['nome'] . "</option>";
+				echo "<option hidden selected >Vendedores</option>
+				<option value='" . $linha['ID'] . "'>" . $linha['nome'] . "</option>";
 			}
 			echo "</select>";
 		?> 
@@ -92,25 +91,26 @@
 	</form>
 	<?php
 
-if (isset($_POST['codigo_produto'])) {
+if (isset($_POST['cliente_fk'])) {
 
 	$con = conecta();
-
-	$codigo_pe= $_POST['codigo_ped'];
-	$nome_pe = $_POST['nome_ped'];
-	$tipo_pe= $_POST['tipo_ped'];
-	$quantida_p = $_POST['quantida_prod'];
+	$quantida_p = $_POST['quant_prod'];
 	$valor_vp = $_POST['valor_prod'];
+	$client = $_POST ['cliente_fk'];
+	$prod1 = $_POST ['prod_pe'];
 	$valor_tt = $_POST['valor_t'];
-	$dt_pe = $_POST['data'];
+	$vendd= $_POST ['vend_pe'];
+	$dt_pe = $_POST['data'];	
+	
+	
 
-
-	$sql = "INSERT INTO produtos (id, quantidade,valor, FK_fornecedor_id, FK_cliente_id, FK_produtos_id, valor_total, FK_vendedor_id, data) VALUES ('$codigo_pe','$quantida_p', '$valor_vp','Null',$'nome_pe', '$')";
+	$sql = "INSERT INTO pedido (quantidade,valor, FK_cliente_id, FK_produtos_id, valor_total, FK_vendedor_id, data) VALUES ('$quantida_p', '$valor_vp','$client', '$prod1', '$valor_tt', '$vendd', '$dt_pe')";
 
 	$resultado = mysqli_query($con, $sql);
 
-	mysqli_close($con);
+	$sql1 = "UPDATE produtos SET produtos.quantidade = produtos.quantidade - '$quantida_p' WHERE produtos.id = '$prod1'";
 
+	mysqli_close($con);
 
 
 }

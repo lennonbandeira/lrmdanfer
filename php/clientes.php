@@ -48,7 +48,7 @@
 		<input type="number" name="tel_cliente" placeholder=" Telefone:" class="input">
 		<input type="text" name="email_cliente" placeholder=" E-mail:" class="input">
 		<input type="text" name="resp_cliente" placeholder=" Responsável:" class="input">
-		<select name="cidade_cliente" id="cidade">
+		<select name="cidade_cliente" id="cidade" class="input">
 			<?php
 			$servidor = "localhost";
 			$usuario = "root";
@@ -95,7 +95,7 @@ if (isset($_POST['nome_cliente'])) {
 
 
 	$sql = "INSERT INTO cliente (id_cliente, nome_cliente, r_social, inscricao,cnpj, bairro, endereco, cep, telefone, email, responsavel, FK_cidade_id) VALUES ('$codigo_cli','$nome_cli', '$rsocial_cli','$iestadual_cli',$cnpj_cli, '$bairro_cli', '$end_cli', '$cep_cli', '$tel_cli', '$email_cli', '$resp_cli', '$cidade_cli')";
-   print_r($sql);
+   
 	$resultado = mysqli_query($con, $sql);
 
 	mysqli_close($con);

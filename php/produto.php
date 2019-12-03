@@ -48,7 +48,7 @@
 			$sql5="SELECT * FROM fornecedor";
 			$resultado4= mysqli_query($con,$sql5);
 
-			echo "<select name='fornecedor_pe'>";
+			echo "<select name='forne' class='input'>";
 
 			foreach($resultado4 as $linha2){
 
@@ -69,20 +69,21 @@
 
 if (isset($_POST['codigo_produto'])) {
 
+
 	
 
 	$con = conecta();
 
 	$codigo_p= $_POST['codigo_produto'];
 	$nome_p = $_POST['nome_produto'];
-	$fornecedor_p= $_POST['fornecedor_pe'];
+	$fornecedor= $_POST['forne'];
 	$ncm_p = $_POST['ncm'];
 	$valor_p= $_POST['valor_produto'];
 	$quantida_p = $_POST['quantida_produto'];
 	$obs_p = $_POST['obs_produto'];
 
 
-	$sql = "INSERT INTO produtos (id, nome, ncm, valor_unitario, observacao, quantidade, fornecedor) VALUES ('$codigo_p','$nome_p', '$ncm_p','$valor_p',$obs_p, '$quantida_p', '$fornecedor_pe')";
+	$sql = "INSERT INTO produtos (id, nome, ncm, valor_unitario, observacao, quantidade, fornecedor) VALUES ('$codigo_p','$nome_p', '$ncm_p','$valor_p','$obs_p', '$quantida_p', '$fornecedor')";
 
 	$resultado = mysqli_query($con, $sql);
 
