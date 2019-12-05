@@ -31,7 +31,7 @@
 
 	</nav>
 
-<li><a href="listvendedores.php">Vendedores Cadastrados</a></li>
+<li><a style="font-size: 25px;" href="listvendedores.php">Clique para acessar os vendedores</a></li>
 
 	<form  action="vendedores.php" method="Post" id="form">
 		

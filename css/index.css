@@ -53,3 +53,22 @@ a{
 	color: white;
 }
 
+td{
+
+
+  border-bottom: 1px solid yellow;
+}
+
+	.butao {
+		width: 200px;
+		height: 40px;
+		background-color:#f6ee34;
+		color:  #1e272b;
+		border: 0;
+		margin:0;
+		padding: 0;
+		border-radius: 2px;
+		font-size: 24px;
+		font-family: 'Playfair Display', serif;
+		
+	}

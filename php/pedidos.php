@@ -108,7 +108,15 @@ if (isset($_POST['cliente_fk'])) {
 
 	$resultado = mysqli_query($con, $sql);
 
-	$sql1 = "UPDATE produtos SET produtos.quantidade = produtos.quantidade - '$quantida_p' WHERE produtos.id = '$prod1'";
+	if ($resultado) {
+		
+		echo "<script>alert('cadastrado com sucesso')</script>";
+	}
+
+
+
+	$sql1 = "UPDATE produtos SET produtos.quantidade = produtos.quantidade - $quantida_p WHERE produtos.id = $prod1";
+	$resultado1 = mysqli_query($con, $sql1);
 
 	mysqli_close($con);
 

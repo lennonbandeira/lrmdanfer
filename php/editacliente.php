@@ -31,6 +31,32 @@
 
 
 	</nav>
+	<?php 
+
+            include "../conexao/connection.php";
+
+
+			if(isset($_GET['id_cliente'])) {
+
+				$id = $_GET['id_cliente'];
+
+				$con = conecta();
+
+				$sql = "SELECT * FROM cliente WHERE id_cliente = '$id'";
+
+				$resultado = mysqli_query($con, $sql) or die('nao conectou');
+
+				mysqli_close($con);
+
+				$result=mysqli_fetch_assoc($resultado);
+
+
+
+			}
+
+
+
+	 ?>
 
 	<li><a style="font-size: 25px;" href="listclientes.php">Clique para acessar os Clientes</a></li>
 

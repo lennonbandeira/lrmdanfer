@@ -34,7 +34,7 @@
 
 	</nav>
 
-	<li><a href="estoque.php">Estoque De Produtos</a></li>
+	<li><a style="font-size: 25px;" href="estoque.php">Clique para acessar o Estoque</a></li>
 
 	<form  action="produto.php" method="Post" id="form">
 		
@@ -86,6 +86,12 @@ if (isset($_POST['codigo_produto'])) {
 	$sql = "INSERT INTO produtos (id, nome, ncm, valor_unitario, observacao, quantidade, fornecedor) VALUES ('$codigo_p','$nome_p', '$ncm_p','$valor_p','$obs_p', '$quantida_p', '$fornecedor')";
 
 	$resultado = mysqli_query($con, $sql);
+
+	if ($resultado) {
+		
+		echo "<script>alert('cadastrado com sucesso')</script>";
+	}
+
 
 	mysqli_close($con);
 

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Cadastros</title>
+	<title>lista clientes</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<script type="text/javascript" src="../JS/script.js"></script>
 
@@ -38,7 +38,7 @@
 
 	$con = conecta();
 
-	$sql = "SELECT * FROM produtos";
+	$sql = "SELECT * FROM cliente";
 
 	$resultado = mysqli_query($con, $sql);
 
@@ -47,7 +47,7 @@
 
 	<section>
 
-		<div style="width: 100%; text-align: center; margin-top: 15px;">
+	<div style="width: 100%; text-align: center; margin-top: 15px;">
 			
 			<form method="" action="" id="">
 
@@ -63,28 +63,38 @@
 			
 			<tr>
 				<td>ID:</td>
-				<td>nome:</td>
-				<td>NCM:</td>
-				<td>Valor unitario:</td>
-				<td>Observação:</td>
-				<td>quantidade:</td>
-				<td>fornecedor</td>
+				<td>Nome:</td>
+				<td>Razão Social:</td>
+				<td>Inscrição Estadual:</td>
+				<td>CNPJ:</td>
+				<td>Bairro:</td>
+				<td>Endereço:</td>
+				<td>CEP</td>
+				<td>Telefone:</td>
+				<td>E-mail:</td>
+				<td>Responsavel:</td>
+				<td>Cidade:</td>			
 			</tr>
 
 			<?php foreach($resultado as $dado){ ?>
 
 			<tr>
-				<td><?php echo $dado['id'] ?></td>
-				<td> <?php echo $dado['nome'] ?></td>
-				<td><?php echo $dado['ncm'] ?></td>
-				<td> <?php echo $dado['valor_unitario'] ?></td>
-				<td><?php echo $dado['observacao'] ?></td>
-				<td> <?php echo $dado['quantidade'] ?></td>
-				<td> <?php echo $dado['fornecedor'] ?></td>
+				<td><?php echo $dado['id_cliente'] ?></td>
+				<td> <?php echo $dado['nome_cliente'] ?></td>
+				<td><?php echo $dado['r_social'] ?></td>
+				<td> <?php echo $dado['inscricao'] ?></td>
+				<td><?php echo $dado['cnpj'] ?></td>
+				<td> <?php echo $dado['bairro'] ?></td>
+				<td><?php echo $dado['endereco'] ?></td>
+				<td> <?php echo $dado['cep'] ?></td>
+				<td><?php echo $dado['telefone'] ?></td>
+				<td> <?php echo $dado['email'] ?></td>
+				<td><?php echo $dado['responsavel'] ?></td>
+				<td> <?php echo $dado['FK_cidade_id'] ?></td>				
 
-				<td><?php echo "<button onclick='editar(".$dado['id'].")'>Editar</button>";?></td>
+				<td><?php echo "<button onclick='editar(".$dado['id_cliente'].")'>Editar</button>";?></td>
 
-				<td><?php echo "<button id='excluir' value='excluir' onclick='excluir(".$dado['id'].")'>Excluir</button>"?></td>
+				<td><?php echo "<button id='excluir' value='excluir' onclick='excluir(".$dado['id_cliente'].")'>Excluir</button>"?></td>
 				
 			</tr> 
 

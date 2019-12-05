@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Cidades</title>
+	<title>Fornecedores</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<script type="text/javascript" src="../JS/script.js"></script>
 
@@ -38,7 +38,7 @@
 
 	$con = conecta();
 
-	$sql = "SELECT * FROM cidade";
+	$sql = "SELECT * FROM fornecedor";
 
 	$resultado = mysqli_query($con, $sql);
 
@@ -51,15 +51,23 @@
 			
 			<tr>
 				<td>ID:</td>
-				<td>Nome:</td>			
+				<td>Nome:</td>
+				<td>cnpj</td>
+				<td>email:</td>
+				<td>telefone</td>
+				
+							
 			</tr>
 
 			<?php foreach($resultado as $dado){ ?>
 
 			<tr>
 				<td><?php echo $dado['id'] ?></td>
-				<td> <?php echo $dado['nome'] ?></td>				
-
+				<td> <?php echo $dado['nome'] ?></td>
+				<td><?php echo $dado['cnpj'] ?></td>
+				<td> <?php echo $dado['email'] ?></td>
+				<td><?php echo $dado['telefone'] ?></td>
+								
 
 				<td><?php echo "<button id='excluir' value='excluir' onclick='excluir(".$dado['id'].")'>Excluir</button>"?></td>
 				

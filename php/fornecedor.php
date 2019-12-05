@@ -32,6 +32,10 @@
 
 	</nav>
 
+
+<li><a style="font-size: 25px;" href="listfornecedores.php">Clique para acessar os fornecedores</a></li>
+
+
 	<form  action="fornecedor.php" method="Post" id="form">
 		
 		<div class="content">
@@ -64,6 +68,12 @@ if (isset($_POST['nome_forne'])) {
 	$sql ="INSERT INTO fornecedor (id, nome, cnpj, email, telefone) VALUES ('$codigo_f','$nome_f', '$cnpj_f', '$email_f', '$tel_f')";
 
 	$resultado = mysqli_query($con, $sql);
+
+	if ($resultado) {
+		
+		echo "<script>alert('cadastrado com sucesso')</script>";
+	}
+
 
 	mysqli_close($con);
 

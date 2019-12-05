@@ -1,9 +1,9 @@
 	#form {
 		width: 400px;
-		height: 980px;
+		height: 1100px;
 		background-color:#06080a;
 		position: absolute;
-		top: 50%;
+		top: 40%;
 		left: 50%;
 		margin:-105px 0px 0px -200px;
 		display: flex;

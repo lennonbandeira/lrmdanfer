@@ -31,7 +31,7 @@
 
 	</nav>
 
-	<li><a href="listcidades.php">Cidades Cadastradas</a></li>
+	<li><a style="font-size: 25px;" href="listcidades.php">Clique para acessar as cidades</a></li>
 
 	<form  action="cidades.php" method="Post" id="form">
 		
@@ -57,6 +57,11 @@ if (isset($_POST['id_cid'])) {
 	$sql = "INSERT INTO cidade (id, nome) VALUES ('$id_c','$nome_c')";
 
 	$resultado = mysqli_query($con, $sql);
+	if ($resultado) {
+		
+		echo "<script>alert('cadastrado com sucesso')</script>";
+	}
+
 
 	mysqli_close($con);
 

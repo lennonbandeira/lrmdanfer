@@ -60,8 +60,6 @@
 				<td><?php echo $dado['ID'] ?></td>
 				<td> <?php echo $dado['nome'] ?></td>				
 
-				<td>Editar</td>
-
 				<td><?php echo "<button id='excluir' value='excluir' onclick='excluir(".$dado['ID'].")'>Excluir</button>"?></td>
 				
 			</tr> 
