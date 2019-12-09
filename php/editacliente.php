@@ -36,9 +36,9 @@
             include "../conexao/connection.php";
 
 
-			if(isset($_GET['id_cliente'])) {
+			if(isset($_GET['id'])) {
 
-				$id = $_GET['id_cliente'];
+				$id = $_GET['id'];
 
 				$con = conecta();
 
@@ -61,83 +61,29 @@
 	<li><a style="font-size: 25px;" href="listclientes.php">Clique para acessar os Clientes</a></li>
 
 
-	<form  action="clientes.php" method="Post" id="form">
+	<form  action="update_cliente.php" method="Post" id="form">
 		
 		<div class="content">
 
-		<input type="number" name="id_cliente" placeholder="cód. Cliente:" class="input">
-		<input type="text" name="nome_cliente" placeholder=" Nome Cliente:" class="input">
-		<input type="text" name="rsocial_cliente" placeholder="Razão Social:" class="input">
-		<input type="text" name="iestadual_cliente" placeholder=" Inscrição estadual:" class="input">
-		<input type="text" name="cnpj_cliente" placeholder=" CNPJ:" class="input"> 
-		<input type="text" name="bairro_cliente" placeholder=" Bairro:" class="input">
-		<input type="text" name="end_cliente" placeholder=" Endereço:" class="input">
-		<input type="text" name="cep_cliente" placeholder=" CEP:" class="input">
-		<input type="number" name="tel_cliente" placeholder=" Telefone:" class="input">
-		<input type="text" name="email_cliente" placeholder=" E-mail:" class="input">
-		<input type="text" name="resp_cliente" placeholder=" Responsável:" class="input">
-		<select name="cidade_cliente" id="cidade" class="input">
-			<?php
-			$servidor = "localhost";
-			$usuario = "root";
-			$senha = "";
-			$db = "lrm";
-			$conn = mysqli_connect($servidor, $usuario, $senha, $db);
-
-			if (!$conn){
-			die();
-			}
-
-			$sql = "SELECT * FROM  cidade";
-			$resultado = mysqli_query($conn,$sql);
-			mysqli_fetch_array($resultado);
-			foreach ($resultado as $rows) {
-				echo "<option value = '".$rows['id']."'>".$rows['nome']."</option>";
-			}
-			?>
-		</select>
-		<button type="submit" class="butao">Cadastrar</button>
+		<input type="hidden" name="id_cliente" value="<?php echo $result['id_cliente']?>" >
+		<label style="color: yellow; font-size: 20px; align-items:">Nome do cliente</label>
+		<input type="text" name="nome_cliente" placeholder=" Nome Cliente:" class="input" value="<?php echo $result['nome_cliente']?>">
+		<label style="color: yellow; font-size: 20px; align-items:">Razão social</label>
+		<input type="text" name="rsocial_cliente" placeholder="Razão Social:" class="input" value="<?php echo $result['r_social']?>"> 
+			    <label style="color: yellow; font-size: 20px; align-items:">Bairro</label>
+		<input type="text" name="bairro_cliente" placeholder=" Bairro:" class="input" value="<?php echo $result['bairro']?>">
+		    <label style="color: yellow; font-size: 20px; align-items:">Endereço</label>	
+		<input type="text" name="end_cliente" placeholder=" Endereço:" class="input" value="<?php echo $result['endereco']?>">
+	    <label style="color: yellow; font-size: 20px; align-items:">CEP</label>
+		<input type="text" name="cep_cliente" placeholder=" CEP:" class="input" value="<?php echo $result['cep']?>">
+	    <label style="color: yellow; font-size: 20px; align-items:">Telefone</label>
+		<input type="number" name="tel_cliente" placeholder=" Telefone:" class="input" value="<?php echo $result['telefone']?>">
+	    <label style="color: yellow; font-size: 20px; align-items:">E-mail</label>		
+		<input type="text" name="email_cliente" placeholder=" E-mail:" class="input" value="<?php echo $result['email']?>">
+	    <label style="color: yellow; font-size: 20px; align-items:">Responsavel</label>
+		<input type="text" name="resp_cliente" placeholder=" Responsável:" class="input" value="<?php echo $result['responsavel']?>">
+		<button type="submit" class="butao">Alterar</button>
 		</div>
 	</form>
-
-	<?php
-
-if (isset($_POST['nome_cliente'])) {
-
-	include "../conexao/connection.php";
-
-	$con = conecta();
-
-	$codigo_cli= $_POST['id_cliente'];
-	$nome_cli = $_POST['nome_cliente'];
-	$rsocial_cli= $_POST['rsocial_cliente'];
-	$iestadual_cli = $_POST['iestadual_cliente'];
-	$cnpj_cli= $_POST['cnpj_cliente'];
-	$bairro_cli = $_POST['bairro_cliente'];
-	$end_cli = $_POST['end_cliente'];
-	$cep_cli = $_POST['cep_cliente'];
-	$tel_cli = $_POST['tel_cliente'];
-	$email_cli = $_POST['email_cliente'];
-	$resp_cli = $_POST['resp_cliente'];
-	$cidade_cli = $_POST['cidade_cliente'];
-
-
-	$sql = "INSERT INTO cliente (id_cliente, nome_cliente, r_social, inscricao,cnpj, bairro, endereco, cep, telefone, email, responsavel, FK_cidade_id) VALUES ('$codigo_cli','$nome_cli', '$rsocial_cli','$iestadual_cli',$cnpj_cli, '$bairro_cli', '$end_cli', '$cep_cli', '$tel_cli', '$email_cli', '$resp_cli', '$cidade_cli')";
-   
-	$resultado = mysqli_query($con, $sql);
-
-if ($resultado) {
-		
-		echo "<script>alert('cadastrado com sucesso')</script>";
-	}
-
-	mysqli_close($con);
-
-
-
-}
-
- ?>
-
 </body>
 </html>

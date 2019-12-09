@@ -92,9 +92,9 @@
 				<td><?php echo $dado['responsavel'] ?></td>
 				<td> <?php echo $dado['FK_cidade_id'] ?></td>				
 
-				<td><?php echo "<button onclick='editar(".$dado['id_cliente'].")'>Editar</button>";?></td>
+				<td><?php echo "<button onclick='editar2(".$dado['id_cliente'].")'>Editar</button>";?></td>
 
-				<td><?php echo "<button id='excluir' value='excluir' onclick='excluir(".$dado['id_cliente'].")'>Excluir</button>"?></td>
+				<td><?php echo "<button id='excluir' value='excluir' onclick='deletar(".$dado['id_cliente'].")'>Excluir</button>"?></td>
 				
 			</tr> 
 
@@ -114,13 +114,13 @@ $con = conecta();
 
 $deletar = $_GET['delete'];
 
-$sql = "DELETE FROM produtos WHERE id = '$deletar'";
+$sql = "DELETE FROM cliente WHERE id_cliente = '$deletar'";
 
 $resultado = mysqli_query($con, $sql);
 
 if ($resultado) {
 	
-	header('location: estoque.php');
+	header('location: listclientes.php');
 }
 
 mysqli_close($con);

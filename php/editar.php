@@ -70,10 +70,13 @@
 
 	    <input type="hidden" name="id" value="<?php echo $result['id']?>">
 
+	    <label style="color: yellow; font-size: 20px; align-items:">Nome do produto</label>
 		<input type="text" name="nome_produto" placeholder=" Nome:" class="input" value="<?php echo $result['nome']?>">
-
+	    <label style="color: yellow; font-size: 20px; align-items:">Valor da unidade</label>
 		<input type="text" name="valor_produto" placeholder=" Valor Unidade:" class="input" value="<?php echo $result['valor_unitario']?>"> 
+		<label style="color: yellow; font-size: 20px; align-items:">Quantidade</label>
 		<input type="number" name="quantida_produto" placeholder=" Quantidade:" class="input" value="<?php echo $result['quantidade']?>">
+			    <label style="color: yellow; font-size: 20px; align-items:">Observação</label>
 		<input type="text" name="obs_produto" placeholder=" Observação:" class="input" value="<?php echo $result['observacao']?>">
 		<button type="submit" class="butao">Alterar</button>
 		</div>

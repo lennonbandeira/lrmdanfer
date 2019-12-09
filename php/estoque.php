@@ -42,6 +42,7 @@
 
 	$resultado = mysqli_query($con, $sql);
 
+	mysqli_close($con);
 
 	 ?>
 
@@ -49,9 +50,9 @@
 
 		<div style="width: 100%; text-align: center; margin-top: 15px;">
 			
-			<form method="" action="" id="">
+			<form method="" action="">
 
-			<input style="margin-bottom: 2px; width: 25%; height: 40px;" name="pesquisar" id="pesquisar" type="search" ><button type="button" onclick="" class="butao">Pesquisar</button>
+			<input style="margin-bottom: 2px; width: 25%; height: 40px;" name="pesquisar" id="pesquisar" ><button type="button" onclick="search()" class="butao">Pesquisar</button>
 
 			</form>
 
@@ -59,7 +60,7 @@
 
 		<table style="font-size: 25px; margin-top: 10px; color: white; width: 100%; background-color: black; background: black;
   border-top: 1px solid yellow;
-  border-bottom: 1px solid yellow;">
+  border-bottom: 1px solid yellow;" id="troca">
 			
 			<tr>
 				<td>ID:</td>

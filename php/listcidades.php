@@ -46,8 +46,9 @@
 	 ?>
 
 	<section>
-
-		<table style="color: white; width: 100%; background-color: black;">
+<table  style="font-size: 25px; margin-top: 10px; color: white; width: 100%; background-color: black; background: black;
+  border-top: 1px solid yellow;
+  border-bottom: 1px solid yellow;">
 			
 			<tr>
 				<td>ID:</td>
@@ -59,7 +60,6 @@
 			<tr>
 				<td><?php echo $dado['id'] ?></td>
 				<td> <?php echo $dado['nome'] ?></td>				
-
 
 				<td><?php echo "<button id='excluir' value='excluir' onclick='excluir(".$dado['id'].")'>Excluir</button>"?></td>
 				

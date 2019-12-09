@@ -47,7 +47,20 @@
 
 	<section>
 
-		<table style="color: white; width: 100%; background-color: black;">
+			<div style="width: 100%; text-align: center; margin-top: 15px;">
+			
+			<form method="" action="" id="">
+
+			<input style="margin-bottom: 2px; width: 25%; height: 40px;" name="pesquisar" id="pesquisar" type="search" ><button type="button" onclick="" class="butao">Pesquisar</button>
+
+			</form>
+
+		</div>
+
+
+		<table  style="font-size: 25px; margin-top: 10px; color: white; width: 100%; background-color: black; background: black;
+  border-top: 1px solid yellow;
+  border-bottom: 1px solid yellow;">
 			
 			<tr>
 				<td>ID:</td>
